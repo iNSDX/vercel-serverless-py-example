@@ -11,3 +11,7 @@ class Offer(Base):
     creator = Column(String, index=True)
     title = Column(String)
     description = Column(String)
+
+class KnowMoreContact(Base):
+    __tablename__ = 'know_more'
+    email = Column(String, primary_key=True, index=True)

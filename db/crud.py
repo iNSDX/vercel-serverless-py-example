@@ -18,3 +18,11 @@ def create_offer(db: Session, offer: schemas.OfferCreate):
     db.commit()
     db.refresh(db_offer)
     return db_offer
+
+
+def know_more(db: Session, email: str):
+    db_email = models.KnowMoreContact(email)
+    db.add(db_email)
+    db.commit()
+    db.refresh(db_email)
+    return db_email
