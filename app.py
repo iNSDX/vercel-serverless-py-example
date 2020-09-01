@@ -53,7 +53,7 @@ def get_offers(skip: int=0, limit: int=100, db: Session = Depends(get_db)):
     offers = crud.get_offers(db, skip, limit)
     return offers
 
-@app.get("/knowmore/")
+@app.post("/knowmore/")
 def know_more(email: str, db: Session = Depends(get_db)):
     email = crud.know_more(db, email)
     return email
