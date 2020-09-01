@@ -1,6 +1,6 @@
 from typing import List
 
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
 
 from sqlalchemy.orm import Session
@@ -54,7 +54,7 @@ def get_offers(skip: int=0, limit: int=100, db: Session = Depends(get_db)):
     return offers
 
 @app.post("/knowmore/")
-def know_more(email: str, db: Session = Depends(get_db)):
+async def know_more(email: str = Form(...), db: Session = Depends(get_db)):
     email = crud.know_more(db, email)
     return email
 
