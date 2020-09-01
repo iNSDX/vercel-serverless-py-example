@@ -21,7 +21,7 @@ def create_offer(db: Session, offer: schemas.OfferCreate):
 
 
 def know_more(db: Session, email: str):
-    db_email = models.KnowMoreContact(email)
+    db_email = models.KnowMoreContact(email=email)
     db.add(db_email)
     db.commit()
     db.refresh(db_email)
