@@ -14,4 +14,6 @@ class Offer(Base):
 
 class KnowMoreContact(Base):
     __tablename__ = 'know_more'
-    email = Column(String, primary_key=True, index=True)
+    
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, index=True)

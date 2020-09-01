@@ -3,7 +3,7 @@ from typing import List
 from fastapi import FastAPI, Depends, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
 
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, SimpleModel
 
 from db.database import SessionLocal, engine
 from db import crud, models, schemas
@@ -53,8 +53,10 @@ def get_offers(skip: int=0, limit: int=100, db: Session = Depends(get_db)):
     offers = crud.get_offers(db, skip, limit)
     return offers
 
-@app.post("/knowmore/")
+@app.post("/knowmore")
 async def know_more(email: str = Form(...), db: Session = Depends(get_db)):
-    email = crud.know_more(db, email)
-    return email
+    saved_email = crud.know_more(db, email=email)
+    return {
+        "email": saved_email
+    }
 
