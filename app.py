@@ -56,7 +56,5 @@ def get_offers(skip: int=0, limit: int=100, db: Session = Depends(get_db)):
 @app.post("/knowmore")
 async def know_more(email: str = Form(...), db: Session = Depends(get_db)):
     saved_email = crud.know_more(db=db, email=email)
-    return {
-        "email": saved_email
-    }
+    return saved_email
 
