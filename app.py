@@ -3,7 +3,7 @@ from typing import List
 from fastapi import FastAPI, Depends, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
 
-from sqlalchemy.orm import Session, SimpleModel
+from sqlalchemy.orm import Session
 
 from db.database import SessionLocal, engine
 from db import crud, models, schemas
